@@ -1,19 +1,15 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "my_admin_panel/manage.py",
+      "src": "my_admin_panel/wsgi.py",
       "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }
   ],
   "routes": [
     {
-      "src": "/staticfiles/(.*)",
-      "dest": "/staticfiles/$1"
+      "src": "/(.*)",
+      "dest": "my_admin_panel/wsgi.py"
     }
   ]
 }
